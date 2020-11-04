@@ -7,39 +7,44 @@
 
 import UIKit
 
+protocol GameSceneDelagate: class {
+    func endGame(score: Int)
+}
+
 class GameScreenViewController: UIViewController {
 
     @IBOutlet var answerButtons: [UIButton]!
     @IBOutlet weak var processBtn: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var progressLabel: UILabel!
     
     var quizList: [Quiz] = []
-    var currentQuizIndex = 0
-    var isGameOver = false
-    var isWin = false
+    var gameSession: GameSession = Game.shared.initGameSession()
+    
+    weak var gameSceneDelegate: GameSceneDelagate?
+    
+    var observer: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initQuizList()
-        guard quizList.count > currentQuizIndex else {
+        guard quizList.count > 0 else {
             fatalError("Quzes not found")
         }
-        showQuiz(quiz: quizList[currentQuizIndex])
+        showQuiz(quiz: Game.shared.gameSession.getCurrentQuiz())
+        progressLabel.text = ""
+        observer = progressOserver()
     }
 
     @IBAction func answerSelected(_ sender: UIButton) {
         let tag = Int(sender.tag)
-        guard quizList.count > currentQuizIndex else {
-            return
-        }
-        let quiz = quizList[currentQuizIndex]
-        guard quiz.rightAnswerIndex == tag else {
-            isGameOver = true
+        let quiz = gameSession.getCurrentQuiz()
+        showRightAnswer(quiz: quiz)
+        guard gameSession.checkAnswer(answerIndex: tag) else {
             showGaneOverBtn()
             return
         }
-        if (isLastQuestion()) {
-            isGameOver = true
+        if (Game.shared.gameSession.isWin) {
             showWinBtn()
         } else {
             showNextQuestionBtn()
@@ -47,23 +52,32 @@ class GameScreenViewController: UIViewController {
     }
     
     @IBAction func processBtnTap(_ sender: Any) {
-        guard !isGameOver else {
+        guard !gameSession.isGameOver else {
             endGame()
             return
         }
         processBtn.isHidden = true
         processBtn.setTitle("", for: .normal)
+        for btn in answerButtons {
+            btn.backgroundColor = .white
+            btn.isEnabled = true
+            btn.alpha = 1
+        }
         loadNextQuestion()
     }
     
-    private func isLastQuestion() -> Bool {
-        return quizList.count == currentQuizIndex + 1
+    private func progressOserver() -> NSKeyValueObservation {
+        return {
+            Game.shared.gameSession.progress.observe(\ProgressObservable.correctAnswersCount, options: .initial) { [weak self] (object, change) in
+                self?.progressLabel.text = "\(object.correctAnswersCount) / \(object.quizCount)"
+            }
+        }()
     }
     
     private func loadNextQuestion() {
-        currentQuizIndex += 1
-        let quiz = quizList[currentQuizIndex]
-        showQuiz(quiz: quiz)
+        if gameSession.hasNextQuestion() {
+            showQuiz(quiz: gameSession.getNextQuestion())
+        }
     }
     
     private func showWinBtn() {
@@ -85,6 +99,10 @@ class GameScreenViewController: UIViewController {
     }
     
     private func endGame() {
+        if let gameSceneDelegate = gameSceneDelegate {
+            gameSceneDelegate.endGame(score: gameSession.getScore())
+        }
+        Game.shared.addRecord(Record(date: Date(), score: gameSession.getScore()))
         dismiss(animated: true)
     }
     
@@ -97,43 +115,19 @@ class GameScreenViewController: UIViewController {
         }
     }
     
-    private func showRightAnswer() {
-        
+    private func showRightAnswer(quiz: Quiz) {
+        for btn in answerButtons {
+            btn.isEnabled = false
+            btn.alpha = 0.5
+            if btn.tag == quiz.rightAnswerIndex {
+                btn.backgroundColor = .green
+            } else {
+                btn.backgroundColor = .red
+            }
+        }
     }
     
     private func initQuizList() {
-        quizList = [
-            Quiz(question: "На каком инструменте, как считается, играл древнерусский певец и сказитель Боян?", answers: [
-                "На гуслях",
-                "На виолончели",
-                "На баяне",
-                "На гитаре"
-            ], rightAnswerIndex: 0),
-            Quiz(question: "Продолжаем игру. В какой из этих стран один из официальных языков - французский?", answers: [
-                "Кения",
-                "Республика Гаити",
-                "Эквадор",
-                "Венесуэла"
-            ], rightAnswerIndex: 1),
-            Quiz(question: "В каком из этих фильмов не снимался Александр Абдулов?", answers: [
-                "Московские каникулы",
-                "Карнавал",
-                "Чародеи",
-                "Убить дракона"
-            ], rightAnswerIndex: 0),
-            Quiz(question: "В каком году произошла Куликовская битва?", answers: [
-                "1360",
-                "1412",
-                "1380",
-                "1398"
-            ], rightAnswerIndex: 2),
-            Quiz(question: "Кто автор музыки к детской песенке Чунга-Чанга?", answers: [
-                "Зацепин",
-                "Дербенёв",
-                "Шпиц",
-                "Шаинский"
-            ], rightAnswerIndex: 3),
-            
-        ]
+        self.quizList = Game.shared.gameSession.quizList
     }
 }
