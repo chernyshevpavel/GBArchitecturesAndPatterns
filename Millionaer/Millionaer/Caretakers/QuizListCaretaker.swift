@@ -25,13 +25,17 @@ final class QuizListCaretaker {
     
     func retrieveQuizList() -> [Quiz] {
         guard let data = UserDefaults.standard.data(forKey: key) else {
-            return []
+            return defaultList()
         }
         do {
-            return try self.decoder.decode([Quiz].self, from: data)
+            var list: [Quiz] = try self.decoder.decode([Quiz].self, from: data)
+            if list.count == 0 {
+                list = defaultList()
+            }
+            return list
         } catch {
             print(error)
-            return []
+            return defaultList()
         }
     }
     

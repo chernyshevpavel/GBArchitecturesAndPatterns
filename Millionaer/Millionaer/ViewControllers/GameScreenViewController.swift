@@ -58,20 +58,28 @@ class GameScreenViewController: UIViewController {
         }
         processBtn.isHidden = true
         processBtn.setTitle("", for: .normal)
-        for btn in answerButtons {
+        toDefaultState(btns: answerButtons)
+        loadNextQuestion()
+    }
+    
+    @IBAction func helpBtn(_ sender: UIButton) {
+        sender.isEnabled = false
+        toDefaultState(btns: answerButtons)
+        switch sender.tag {
+        case 0: Game.shared.gameSession.hintUsageFacade.callFriend(uiBtns: answerButtons)
+        case 1 :Game.shared.gameSession.hintUsageFacade.use50to50Hint(uiBtns: answerButtons)
+        case 2: Game.shared.gameSession.hintUsageFacade.useAuditoryHelp(uiBtns: answerButtons)
+        default: return
+        }
+    }
+    
+    private func toDefaultState(btns: [UIButton]) {
+        for btn in btns {
             btn.backgroundColor = .white
             btn.isEnabled = true
             btn.alpha = 1
-        }
-        loadNextQuestion()
-    }
-    @IBAction func helpBtn(_ sender: UIButton) {
-        sender.isEnabled = false
-        switch sender.tag {
-        case 0: 
-        case 1:
-        case 2:
-        default: return
+            btn.layer.borderWidth = 0
+            btn.layer.cornerRadius = 0
         }
     }
     

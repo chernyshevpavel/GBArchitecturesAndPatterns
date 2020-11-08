@@ -174,17 +174,46 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ncx-RO-byT">
+                                <rect key="frame" x="20" y="49" width="374" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fhs-09-9el">
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="30"/>
+                                        <state key="normal" title="Звонок другу"/>
+                                        <connections>
+                                            <action selector="helpBtn:" destination="ufK-Xk-4tM" eventType="touchUpInside" id="gGK-pf-hMt"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pE-ms-F1D">
+                                        <rect key="frame" x="128" y="0.0" width="118" height="30"/>
+                                        <state key="normal" title="50 / 50"/>
+                                        <connections>
+                                            <action selector="helpBtn:" destination="ufK-Xk-4tM" eventType="touchUpInside" id="kgU-8o-I5p"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abo-KN-GE8">
+                                        <rect key="frame" x="256" y="0.0" width="118" height="30"/>
+                                        <state key="normal" title="Аудитория"/>
+                                        <connections>
+                                            <action selector="helpBtn:" destination="ufK-Xk-4tM" eventType="touchUpInside" id="fp5-Wz-uEP"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LiU-TX-aAT"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="LiU-TX-aAT" firstAttribute="trailing" secondItem="ncx-RO-byT" secondAttribute="trailing" constant="20" id="7pu-j5-FQS"/>
                             <constraint firstItem="zvV-w0-kVD" firstAttribute="top" secondItem="LiU-TX-aAT" secondAttribute="top" constant="100" id="D4F-TE-8Bm"/>
                             <constraint firstItem="FcE-sK-DWV" firstAttribute="top" secondItem="2rw-ft-rKi" secondAttribute="bottom" constant="10" id="Kqn-X3-ORF"/>
                             <constraint firstItem="FcE-sK-DWV" firstAttribute="leading" secondItem="LiU-TX-aAT" secondAttribute="leading" constant="10" id="O1K-KO-QlM"/>
+                            <constraint firstItem="ncx-RO-byT" firstAttribute="top" secondItem="LiU-TX-aAT" secondAttribute="top" constant="5" id="Pxm-wE-udk"/>
                             <constraint firstItem="w0g-B7-YXe" firstAttribute="leading" relation="lessThanOrEqual" secondItem="LiU-TX-aAT" secondAttribute="leading" constant="352.5" id="U5r-SG-HdY"/>
                             <constraint firstItem="LiU-TX-aAT" firstAttribute="bottom" secondItem="w0g-B7-YXe" secondAttribute="bottom" id="V7S-fe-baL"/>
                             <constraint firstItem="LiU-TX-aAT" firstAttribute="trailing" secondItem="FcE-sK-DWV" secondAttribute="trailing" constant="10" id="YoP-Yz-HgN"/>
                             <constraint firstItem="zvV-w0-kVD" firstAttribute="centerX" secondItem="LiU-TX-aAT" secondAttribute="centerX" id="dJI-Yh-EQh"/>
+                            <constraint firstItem="ncx-RO-byT" firstAttribute="leading" secondItem="LiU-TX-aAT" secondAttribute="leading" constant="20" id="dke-IV-sGr"/>
                             <constraint firstItem="LiU-TX-aAT" firstAttribute="trailing" secondItem="w0g-B7-YXe" secondAttribute="trailing" constant="20" id="i0a-1y-oM4"/>
                             <constraint firstItem="LiU-TX-aAT" firstAttribute="trailing" secondItem="2rw-ft-rKi" secondAttribute="trailing" constant="10" id="k7x-07-lJ4"/>
                             <constraint firstItem="LiU-TX-aAT" firstAttribute="bottom" secondItem="FcE-sK-DWV" secondAttribute="bottom" constant="52" id="nGl-gr-nbH"/>

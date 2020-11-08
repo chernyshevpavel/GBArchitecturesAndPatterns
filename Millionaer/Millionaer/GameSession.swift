@@ -14,6 +14,7 @@ class GameSession {
     private(set) var isWin = false
     private var quizProcessSrategy: QuizProcessStrategy
     
+    let hintUsageFacade: HintUsageFacade
     let progress = ProgressObservable()
     
     private(set) var quizList = QuizListCaretaker().retrieveQuizList()
@@ -23,6 +24,7 @@ class GameSession {
         self.quizList = quizProcessSrategy.execute(quizList: quizList)
         self.progress.quizCount = self.quizList.count
         self.progress.correctAnswersCount = 0
+        self.hintUsageFacade = HintUsageFacade(quiz: self.quizList[currentQuizIndex])
     }
     
     public func isLastQuestion() -> Bool {
@@ -40,7 +42,9 @@ class GameSession {
     
     public func getNextQuestion() -> Quiz {
         currentQuizIndex += 1
-        return quizList[currentQuizIndex]
+        let nextQuestion = quizList[currentQuizIndex]
+        hintUsageFacade.currentQuiz = nextQuestion
+        return nextQuestion
     }
     
     public func checkAnswer(answerIndex: Int) -> Bool {
