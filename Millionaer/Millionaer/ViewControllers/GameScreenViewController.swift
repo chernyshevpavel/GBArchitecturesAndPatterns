@@ -51,7 +51,7 @@ class GameScreenViewController: UIViewController {
         }
     }
     
-    @IBAction func processBtnTap(_ sender: Any) {
+    @IBAction func processBtnTap(_ sender: UIButton) {
         guard !gameSession.isGameOver else {
             endGame()
             return
@@ -65,6 +65,16 @@ class GameScreenViewController: UIViewController {
         }
         loadNextQuestion()
     }
+    @IBAction func helpBtn(_ sender: UIButton) {
+        sender.isEnabled = false
+        switch sender.tag {
+        case 0: 
+        case 1:
+        case 2:
+        default: return
+        }
+    }
+    
     
     private func progressOserver() -> NSKeyValueObservation {
         return {
