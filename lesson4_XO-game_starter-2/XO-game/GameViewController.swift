@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class GameViewController: UIViewController {
     
     @IBOutlet var gameboardView: GameboardView!
@@ -16,57 +17,37 @@ class GameViewController: UIViewController {
     @IBOutlet var winnerLabel: UILabel!
     @IBOutlet var restartButton: UIButton!
     
-    private let gameboard = Gameboard()
-    private lazy var referee = Referee(gameboard: gameboard)
-    private var currentState: GameState! {
-        didSet {
-            currentState.begin()
-        }
-    }
+    var gameOver = false
+    private var gameboard = Gameboard()
+    private var currentState: GameState!
+    public var currentModeState: GameModeState?
+    public var mode: Mode!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setFirstState()
-        
+        initGameModeSatae(mode: self.mode)
+        self.currentModeState?.initState()
         gameboardView.onSelectPosition = { [weak self] position in
             guard let self = self else { return }
-            
-            self.currentState.addMark(at: position)
-            if self.currentState.isCompleted {
-                self.setNextState()
+            if !self.gameOver {
+                self.currentModeState?.pointHandler(position: position)
             }
         }
     }
     
-    func setFirstState() {
-        let firstPlayer = Player.first
-        currentState = PlayerInputState(player: firstPlayer,
-                                        gameViewController: self,
-                                        gameboard: gameboard,
-                                        gameboardView: gameboardView,
-                                        markViewPrototype: firstPlayer.markViewPrototype)
-    }
-    
-    func setNextState() {
-        if let winner = referee.determineWinner() {
-            currentState = GameEndedState(winner: winner, gameViewController: self)
-            return
-            
-        }
-        
-        if let playerInputState = currentState as? PlayerInputState {
-            let nextPlayer = playerInputState.player.next
-            currentState = PlayerInputState(player: nextPlayer,
-                                            gameViewController: self,
-                                            gameboard: gameboard,
-                                            gameboardView: gameboardView,
-                                            markViewPrototype: nextPlayer.markViewPrototype)
+    func initGameModeSatae(mode: Mode) {
+        switch mode {
+        case .Standart: currentModeState = StandartMode(gameViewController: self, gameboard: gameboard, gameboardView: gameboardView)
+        case .Computer: currentModeState = ComputerMode(gameViewController: self, gameboard: gameboard, gameboardView: gameboardView)
+        case .FiveSteps: currentModeState = FiveStepsMode(gameViewController: self, gameboard: gameboard, gameboardView: gameboardView)
         }
     }
     
     @IBAction func restartButtonTapped(_ sender: UIButton) {
-        
+        self.gameboard = Gameboard()
+        self.gameboardView.clear()
+        self.gameOver = false
+        self.viewDidLoad()
     }
 }
 

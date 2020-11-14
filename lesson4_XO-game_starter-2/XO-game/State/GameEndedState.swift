@@ -9,12 +9,15 @@
 import Foundation
 
 class GameEndedState: GameState {
+    var player: Player
+    
     var isCompleted = false
     
-    public let winner: Player?
+    public var winner: Player?
     weak var gameViewController: GameViewController?
     
     public init(winner: Player, gameViewController: GameViewController) {
+        self.player = winner
         self.winner = winner
         self.gameViewController = gameViewController
     }
@@ -33,6 +36,7 @@ class GameEndedState: GameState {
         
         gameViewController?.firstPlayerTurnLabel.isHidden = true
         gameViewController?.secondPlayerTurnLabel.isHidden = true
+        gameViewController?.gameOver = true
     }
     
     func addMark(at position: GameboardPosition) {}
@@ -44,6 +48,8 @@ class GameEndedState: GameState {
             return "1st player"
         case .second:
             return "2nd player"
+        case .computer:
+            return "Computer"
         case .none:
             return "There no is winner"
         }

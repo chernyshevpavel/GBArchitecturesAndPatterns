@@ -33,15 +33,14 @@ class PlayerInputState: GameState {
     }
     
     func begin() {
-        switch self.player {
-        case .first:
+        self.isCompleted = false
+        if self.player == .first {
             gameViewController?.firstPlayerTurnLabel.isHidden = false
             gameViewController?.secondPlayerTurnLabel.isHidden = true
-        case .second:
+        } else if self.player == .second{
             gameViewController?.firstPlayerTurnLabel.isHidden = true
             gameViewController?.secondPlayerTurnLabel.isHidden = false
         }
-        
         gameViewController?.winnerLabel.isHidden = true
     }
     

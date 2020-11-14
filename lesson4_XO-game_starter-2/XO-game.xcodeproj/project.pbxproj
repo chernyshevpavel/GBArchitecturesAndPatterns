@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D7F5E1C255A538D00B28E02 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F5E1B255A538D00B28E02 /* MenuViewController.swift */; };
+		1D7F5E20255B244A00B28E02 /* ComputerInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D7F5E1F255B244A00B28E02 /* ComputerInputState.swift */; };
+		1D93CFC9255DCA6A0032FBA7 /* GameModeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93CFC8255DCA6A0032FBA7 /* GameModeState.swift */; };
+		1D93CFCC255DCE490032FBA7 /* StandartMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93CFCB255DCE490032FBA7 /* StandartMode.swift */; };
+		1D93CFCF256009BC0032FBA7 /* ComputerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93CFCE256009BC0032FBA7 /* ComputerMode.swift */; };
+		1D93CFD225600A0B0032FBA7 /* FiveStepsMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D93CFD125600A0B0032FBA7 /* FiveStepsMode.swift */; };
+		1DD5154725603A1E00F89A18 /* MarkCommandProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD5154625603A1E00F89A18 /* MarkCommandProtocol.swift */; };
+		1DFBF2C725604AC600CAD765 /* OMarkCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF2C625604AC600CAD765 /* OMarkCommand.swift */; };
+		1DFBF2CA25604DB800CAD765 /* XMarkComand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF2C925604DB800CAD765 /* XMarkComand.swift */; };
+		1DFBF2CE256055EF00CAD765 /* TwoStackInwoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF2CD256055EF00CAD765 /* TwoStackInwoker.swift */; };
 		BAF5560F2550755C004051F5 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF5560E2550755C004051F5 /* GameState.swift */; };
 		BAF55611255075B0004051F5 /* PlayerInputState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF55610255075B0004051F5 /* PlayerInputState.swift */; };
 		BAF5561425507A8E004051F5 /* GameEndedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAF5561325507A8E004051F5 /* GameEndedState.swift */; };
@@ -32,6 +42,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D7F5E1B255A538D00B28E02 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		1D7F5E1F255B244A00B28E02 /* ComputerInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerInputState.swift; sourceTree = "<group>"; };
+		1D93CFC8255DCA6A0032FBA7 /* GameModeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModeState.swift; sourceTree = "<group>"; };
+		1D93CFCB255DCE490032FBA7 /* StandartMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandartMode.swift; sourceTree = "<group>"; };
+		1D93CFCE256009BC0032FBA7 /* ComputerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputerMode.swift; sourceTree = "<group>"; };
+		1D93CFD125600A0B0032FBA7 /* FiveStepsMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveStepsMode.swift; sourceTree = "<group>"; };
+		1DD5154625603A1E00F89A18 /* MarkCommandProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkCommandProtocol.swift; sourceTree = "<group>"; };
+		1DFBF2C625604AC600CAD765 /* OMarkCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMarkCommand.swift; sourceTree = "<group>"; };
+		1DFBF2C925604DB800CAD765 /* XMarkComand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkComand.swift; sourceTree = "<group>"; };
+		1DFBF2CD256055EF00CAD765 /* TwoStackInwoker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoStackInwoker.swift; sourceTree = "<group>"; };
 		BAF5560E2550755C004051F5 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		BAF55610255075B0004051F5 /* PlayerInputState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInputState.swift; sourceTree = "<group>"; };
 		BAF5561325507A8E004051F5 /* GameEndedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndedState.swift; sourceTree = "<group>"; };
@@ -69,12 +89,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DD51544256039AC00F89A18 /* GameModeState */ = {
+			isa = PBXGroup;
+			children = (
+				1DD51545256039EA00F89A18 /* StepsModeCommand */,
+				1D93CFC8255DCA6A0032FBA7 /* GameModeState.swift */,
+				1D93CFCE256009BC0032FBA7 /* ComputerMode.swift */,
+				1D93CFD125600A0B0032FBA7 /* FiveStepsMode.swift */,
+				1D93CFCB255DCE490032FBA7 /* StandartMode.swift */,
+			);
+			path = GameModeState;
+			sourceTree = "<group>";
+		};
+		1DD51545256039EA00F89A18 /* StepsModeCommand */ = {
+			isa = PBXGroup;
+			children = (
+				1DD5154625603A1E00F89A18 /* MarkCommandProtocol.swift */,
+				1DFBF2C625604AC600CAD765 /* OMarkCommand.swift */,
+				1DFBF2C925604DB800CAD765 /* XMarkComand.swift */,
+				1DFBF2CD256055EF00CAD765 /* TwoStackInwoker.swift */,
+			);
+			path = StepsModeCommand;
+			sourceTree = "<group>";
+		};
 		BAF5560D25507543004051F5 /* State */ = {
 			isa = PBXGroup;
 			children = (
 				BAF5560E2550755C004051F5 /* GameState.swift */,
 				BAF55610255075B0004051F5 /* PlayerInputState.swift */,
 				BAF5561325507A8E004051F5 /* GameEndedState.swift */,
+				1D7F5E1F255B244A00B28E02 /* ComputerInputState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -117,10 +161,12 @@
 		F874E46F2224621100364CAE /* XO-game */ = {
 			isa = PBXGroup;
 			children = (
+				1DD51544256039AC00F89A18 /* GameModeState */,
 				BAF5561825508EA2004051F5 /* Command */,
 				BAF55615255088FE004051F5 /* Prototype */,
 				BAF5560D25507543004051F5 /* State */,
 				F874E4702224621100364CAE /* AppDelegate.swift */,
+				1D7F5E1B255A538D00B28E02 /* MenuViewController.swift */,
 				F874E4722224621100364CAE /* GameViewController.swift */,
 				F874E4F02225DFF700364CAE /* Referee.swift */,
 				F874E4E62225CB3F00364CAE /* Models */,
@@ -238,13 +284,23 @@
 				BAF5561C25508F0E004051F5 /* Command.swift in Sources */,
 				BAF5561425507A8E004051F5 /* GameEndedState.swift in Sources */,
 				BAF55611255075B0004051F5 /* PlayerInputState.swift in Sources */,
+				1D93CFCC255DCE490032FBA7 /* StandartMode.swift in Sources */,
 				F874E4732224621100364CAE /* GameViewController.swift in Sources */,
 				BAF556202550900B004051F5 /* Invoker.swift in Sources */,
 				F874E4DD2225C25D00364CAE /* GameboardPosition.swift in Sources */,
+				1DD5154725603A1E00F89A18 /* MarkCommandProtocol.swift in Sources */,
+				1DFBF2CA25604DB800CAD765 /* XMarkComand.swift in Sources */,
 				F874E4DF2225C76000364CAE /* MarkView.swift in Sources */,
 				F874E4F12225DFF700364CAE /* Referee.swift in Sources */,
+				1D7F5E20255B244A00B28E02 /* ComputerInputState.swift in Sources */,
+				1D93CFD225600A0B0032FBA7 /* FiveStepsMode.swift in Sources */,
+				1DFBF2C725604AC600CAD765 /* OMarkCommand.swift in Sources */,
+				1D93CFCF256009BC0032FBA7 /* ComputerMode.swift in Sources */,
 				F874E4F52225E2CD00364CAE /* Gameboard.swift in Sources */,
 				BAF556172550890B004051F5 /* Copying.swift in Sources */,
+				1DFBF2CE256055EF00CAD765 /* TwoStackInwoker.swift in Sources */,
+				1D93CFC9255DCA6A0032FBA7 /* GameModeState.swift in Sources */,
+				1D7F5E1C255A538D00B28E02 /* MenuViewController.swift in Sources */,
 				F874E4712224621100364CAE /* AppDelegate.swift in Sources */,
 				F874E4E22225CABF00364CAE /* OView.swift in Sources */,
 				BAF5561A25508EB8004051F5 /* LogAction.swift in Sources */,
