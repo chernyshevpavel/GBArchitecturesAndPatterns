@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D6A5BA32563CAF10006BC1D /* TaskCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A5BA22563CAF10006BC1D /* TaskCaretaker.swift */; };
 		1DFBF2DF256139DB00CAD765 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF2DE256139DB00CAD765 /* AppDelegate.swift */; };
 		1DFBF2E1256139DB00CAD765 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DFBF2E0256139DB00CAD765 /* SceneDelegate.swift */; };
 		1DFBF2E6256139DB00CAD765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DFBF2E4256139DB00CAD765 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D6A5BA22563CAF10006BC1D /* TaskCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCaretaker.swift; sourceTree = "<group>"; };
 		1DFBF2DB256139DB00CAD765 /* task-composite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "task-composite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DFBF2DE256139DB00CAD765 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DFBF2E0256139DB00CAD765 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D6A5BA12563CABF0006BC1D /* Caretakers */ = {
+			isa = PBXGroup;
+			children = (
+				1D6A5BA22563CAF10006BC1D /* TaskCaretaker.swift */,
+			);
+			path = Caretakers;
+			sourceTree = "<group>";
+		};
 		1DFBF2D2256139DB00CAD765 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		1DFBF2DD256139DB00CAD765 /* task-composite */ = {
 			isa = PBXGroup;
 			children = (
+				1D6A5BA12563CABF0006BC1D /* Caretakers */,
 				1DFBF2F425613A7500CAD765 /* Model */,
 				1DFBF2DE256139DB00CAD765 /* AppDelegate.swift */,
 				1DFBF2E0256139DB00CAD765 /* SceneDelegate.swift */,
@@ -154,6 +165,7 @@
 				1DFBF2DF256139DB00CAD765 /* AppDelegate.swift in Sources */,
 				1DFBF3052561A79E00CAD765 /* TaskViewController.swift in Sources */,
 				1DFBF2F925613B2D00CAD765 /* Task.swift in Sources */,
+				1D6A5BA32563CAF10006BC1D /* TaskCaretaker.swift in Sources */,
 				1DFBF2F625613A8800CAD765 /* TaskProtocol.swift in Sources */,
 				1DFBF2E1256139DB00CAD765 /* SceneDelegate.swift in Sources */,
 			);

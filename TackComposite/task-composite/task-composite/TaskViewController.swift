@@ -17,6 +17,11 @@ class TaskViewController: UITableViewController {
         guard let nc = self.navigationController else {
             return }
         nc.navigationBar.topItem?.rightBarButtonItem = self.createAddBtn()
+        if (nc.viewControllers.count == 1) {
+            let caretaker = TaskCaretaker()
+            taskList = caretaker.retrieveRecords()
+            self.tableView.reloadData()
+        }
     }
     
     public func createAddBtn() -> UIBarButtonItem {
@@ -32,9 +37,19 @@ class TaskViewController: UITableViewController {
                 self?.taskList.append(task)
                 self?.parentTask?.subtasks.append(task)
                 self?.tableView.reloadData()
+                self?.saveTasks()
             }
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func saveTasks() {
+        guard let nc = self.navigationController, let tvc = nc.viewControllers.first as? TaskViewController else {
+            return }
+        let caretaker = TaskCaretaker()
+        if let taskList: [Task] = tvc.taskList as? [Task] {
+            caretaker.save(tasks: taskList)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
